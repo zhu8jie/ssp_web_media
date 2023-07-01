@@ -1,0 +1,30 @@
+.page-title{
+  font-size 16px
+}
+  .content{
+    margin-top 25px
+    color #42444C !important
+    font-size 14px
+    min-height: calc(100vh - 200px);
+    height auto
+  }
+  .text{
+    color #42444C
+    font-size 14px
+  }
+  .alert{
+    margin-top: 10px
+    display: inline-block
+    padding: 0 20px
+    background: #F4F5F8
+    height 30px
+    line-height 30px
+    font-size: 13px
+    color: #42444C
+    padding 0 10px
+    span{
+      display inline-block
+      margin-left 5px
+    }
+  }
+

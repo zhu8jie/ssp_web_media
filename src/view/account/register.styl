@@ -1,0 +1,177 @@
+.header {
+  background: #0E1834;
+  display flex
+  justify-content space-between
+  height: 60px;
+  line-height: 60px;
+  padding:0 20px ;
+  width 100%
+  position fixed
+  top 0px
+  z-index 100
+  color #FFFFff
+  .left{
+    img{
+      vertical-align middle
+      width 32px
+    }
+    span{
+      color #F13440
+      font-size 22px
+      margin-left 8px
+      font-weight bold
+      vertical-align middle
+    }
+  }
+  .text{
+    font-size 20px
+    font-weight bold
+  }
+}
+.fixation{
+    width 100%
+    margin: 0 auto;
+    background #FFFFff
+    position fixed
+    top 60px
+    padding-top 30px
+    z-index 100
+    .schedule{
+      width 620px
+      display flex
+      height 50px
+      justify-content space-between
+      margin 0 auto
+      position relative
+      .icon{
+        font-size: 22px;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+      .sch_left{
+        width 320px
+        height 50px
+        position absolute
+        left 0
+        background url("~@/assets/image/sch-left.png") no-repeat center
+        line-height 50px
+        text-align center
+        color #FFFFff
+        &.active{
+          background url("~@/assets/image/yes_left.png") no-repeat center
+          color: #9498A3
+        }
+        .success{
+          position absolute
+          left 0
+          top 0px
+        }
+        img{
+          width 20px
+          height 15px
+          vertical-align middle
+          margin-right 10px
+        }
+        span{
+          vertical-align middle
+        }
+      }
+      .sch_right{
+        width 300px
+        height 50px
+        background url("~@/assets/image/sch-right.png") no-repeat center
+        line-height 50px
+        text-align center
+        color: #9498A3
+        position absolute
+        left 310px
+        &.active{
+          background url("~@/assets/image/no_right.png") no-repeat center
+          color #FFFFff
+        }
+        img{
+          width 20px
+          vertical-align middle
+          margin-right 10px
+        }
+        span{
+          vertical-align middle
+        }
+      }
+    }
+
+}
+
+.content {
+  margin: 120px auto 0;
+  width 780px
+  box-sizing border-box
+  min-height  100vh
+  .con-title {
+    margin: 20px 0;
+    font-size: 25px;
+    color: #000000;
+  }
+  .detail {
+    padding: 50px 40px 50px;
+    text-align: left;
+    .step1 {
+      margin: 0px 50px 10px 0px;
+      .upload_text{
+        .imgs {
+          margin-top 5px
+          position relative
+          width 130px
+          height 78px
+          left 50%
+          transform translateX(-50%)
+          .icons {
+            width 20px
+            height 20px
+            position absolute
+            right: -10px
+            bottom -10px
+          }
+        }
+        p{
+          text-align center
+          margin-top 5px
+
+        }
+      }
+
+      .upload_des {
+        color #9A9A9A
+        font-size 13px
+        margin-top 5px
+      }
+      .FormItem __label {
+        padding: 0px !important;
+        color: black;
+      }
+      .FormItem {
+        margin-bottom: 8px;
+      }
+      .Select{
+        width: 100%;
+      }
+    }
+    .res-bottom{
+      button{
+        width 120px
+        height 40px
+        line-height 40px
+        padding: 0px;
+      }
+    }
+    .reg_operating{
+      button{
+        width 120px
+        height 40px;
+        padding 0px
+        margin-right 15px
+      }
+    }
+
+  }
+}

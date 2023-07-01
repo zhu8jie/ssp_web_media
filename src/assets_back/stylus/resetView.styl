@@ -1,0 +1,248 @@
+/*清除浮动*/
+.clearfix{zoom:1}
+.clearfix:after{content:"";display:block;clear:both}
+
+.ivu-card-body
+	padding: 15px
+.ivu-layout
+	background-color: transparent
+.ivu-layout-header
+	position: fixed
+	z-index: 1001
+	left: 0px
+	top: 0px
+	width: 100%
+	height: 50px
+	line-height: 50px
+	padding: 0 20px
+	background-color: #4083F8
+.page-title
+	font-size: 16px
+	height: 30px
+	line-height: 30px
+.left-bar
+	.ivu-layout-sider-children
+		overflow-y: scroll
+		margin-right: -18px
+		padding-bottom: 48px
+	.ivu-layout-sider-trigger
+		background-color: #FFF
+		.ivu-icon
+			color: #333333
+.left-bar-dropmenu
+	min-width: 120px
+	.ivu-dropdown-item
+		font-size: 12px !important
+		display: flex
+		justify-content: space-between
+		align-items: center
+		&:hover
+			color: #4083F8
+		.iconfont
+			height: 16px
+			line-height: 16px
+			font-size: 12px
+			transform: scale(0.8) translateY(2px)
+	
+.side-menu-wrapper
+	user-select: none
+	.ivu-menu
+		min-width: 140px
+	.ivu-menu-item, .ivu-menu-submenu-title
+		padding: 14px
+		color: #333
+		.ivu-menu-submenu-title-icon
+			margin-right: 0px
+		.icon-finance
+			font-weight: bold
+	.ivu-menu-light
+		&>.ivu-menu-item, .ivu-menu-submenu-title
+			font-weight: bold
+	.ivu-menu-submenu-title
+		.iconfont
+			margin-right: 6px
+		.icon-acount-manage
+			margin-right: 4px
+		.icon-traffic
+			font-size: 13px
+			font-weight: bold
+			margin-right: 6px
+	.menu-collapsed
+		padding-top: 10px
+		.ivu-dropdown
+			width: 100%
+		.ivu-dropdown-rel a
+			width: 100%
+		.ivu-tooltip
+			width: 100%
+			.ivu-tooltip-rel
+				width: 100%
+		.ivu-tooltip-popper .ivu-tooltip-content
+			.ivu-tooltip-arrow
+				border-right-color: #fff
+			.ivu-tooltip-inner
+				background: #fff
+				color: #495060
+	a.drop-menu-a
+		display: inline-block
+		padding: 6px 15px
+		width: 100%
+		text-align: center
+		color: #495060
+		&:hover
+			.iconfont
+				color: #4083F8
+		.iconfont
+			display: inline-block
+			height: 30px
+			font-size: 14px
+			color: #333333
+			text-align: center
+			line-height: 30px
+.ivu-menu-vertical
+	&.ivu-menu-light
+		&:after
+			display: none
+.ivu-btn-primary
+	border-radius: 2px
+.page-center
+	margin-top: 10px
+	text-align: center
+.console-table
+	margin-top: 5px
+	.ivu-table-tbody
+		.ivu-btn-text
+			color: #2d8cf0 !important
+			padding: 0
+			&:last-child
+				margin-right: 0
+			&:hover
+				background-color: transparent
+			&:focus
+				box-shadow: none
+.nav-handle-group
+	margin-top: 10px
+.search-line
+	margin-top: 10px
+.edit-content-card
+	margin-top: 20px
+.private-check-card
+	label.ivu-checkbox-wrapper, label.ivu-radio-wrapper
+		border-radius: 0px !important
+		width: 100px
+		box-sizing: border-box
+		height: 34px
+		line-height: 34px
+		text-align: center
+		background-color: #F9F9F9
+	&.ivu-checkbox-group
+		font-size: 0px
+		label
+			position: relative
+			margin-right: 0px
+			border-radius: 0
+		.ivu-checkbox-wrapper
+			&:after
+				position: absolute
+				left: -1px
+				bottom: -1px
+				width: 0px
+				height: 0px
+				content: ''
+				border-color: transparent transparent #999999 transparent
+				border-width: 0 12px 12px 0
+				border-style: solid
+		.ivu-checkbox-wrapper-checked
+			&:after
+				border-color: transparent transparent #3F83F7 transparent
+	.ivu-checkbox-inner
+		display: none
+.vertical-center-modal
+	display: flex
+	align-items: center
+	justify-content: center
+	.ivu-modal
+		top: 0
+.drawer-center
+	padding: 10px
+	overflow-x: hidden
+	overflow-y: scroll
+.drawer-footer
+	width: 100%
+	position: absolute
+	bottom: 0
+	left: 0
+	border-top: 1px solid #e8e8e8
+	padding: 10px 16px
+	text-align: center
+	background: #fff
+	button
+		width: 100px
+		margin: 0 20px
+.select-tree
+	.vue-treeselect__control
+		box-sizing: border-box
+		height: 32px
+.choose-store
+	&.ivu-form-item-error
+		.ivu-select-selection, .ivu-input
+			border: 1px solid #dcdee2 !important
+		.ivu-select-arrow
+			color: #808695
+.ivu-modal-confirm
+	.ivu-modal-confirm-head
+		display: flex
+	.ivu-modal-confirm-head-icon-confirm
+		.ivu-icon
+			display: block
+.ivu-table
+	color: #333
+	.ivu-table-cell
+		padding: 0 8px
+	.ivu-table-row
+		td
+			padding: 0
+			padding: 5px 0
+		.ivu-table-cell
+			padding: 0 8px
+	.tip-row-line
+		color: #999
+		margin-top: 2px
+	.ivu-poptip-rel
+		.icon-why
+			color: #999
+			cursor: pointer
+.upload-img-format-tips
+	color: #999999
+	line-height: 20px
+	margin-top: 6px
+	font-size: 13px
+.vue-treeselect
+	.vue-treeselect__control
+		border-radius: 2px
+.ivu-menu-vertical 
+	.ivu-menu-submenu 
+		.ivu-menu-item
+			padding-left: 30px !important
+.ad-filter-select
+	&.ivu-select-single .ivu-select-selection .ivu-select-placeholder, &.ivu-select-single .ivu-select-selection .ivu-select-selected-value
+		font-size: 12px
+	&.ivu-select-dropdown-transfer
+		.ivu-select-item
+			font-size: 12px !important
+	.ivu-select-input
+		font-size: 12px
+.name-row-ellipsis
+	height: 20px
+	line-height: 20px
+	overflow: hidden
+	text-overflow: ellipsis
+	white-space: nowrap
+.ad-left-content
+	.ivu-form-item-label
+		font-weight: bold
+		color: #333
+.edit-save-formItem
+	.ivu-btn
+		padding: 0 42px
+		margin-right: 30px
