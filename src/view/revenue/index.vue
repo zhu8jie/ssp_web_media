@@ -116,12 +116,12 @@
             <div class="m-number">{{ getNumber(sumData['ecpm']) }}</div>
           </Card>
         </Col>
-        <Col span="4">
+        <!-- <Col span="4">
           <Card :bordered="false" dis-hover class="earn-card" :padding="0">
             <p>单次点击收益</p>
             <div class="m-number">{{ getNumber(sumData['cpc']) }}</div>
           </Card>
-        </Col>
+        </Col> -->
         <Col span="4">
           <Card :bordered="false" dis-hover class="earn-card" :padding="0">
             <p>预估收益</p>
@@ -216,9 +216,9 @@
          <p>
            <span class="name">数据查询code:</span><span>{{api_key?api_key:'无'}}</span>
          </p>
-        <p>
+        <!-- <p>
           <a target="_blank" :href="api_doc">查看接口文档</a>
-        </p>
+        </p> -->
       </div>
       <div slot="footer">
       </div>

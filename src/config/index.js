@@ -15,23 +15,24 @@ export default {
     useI18n: false,
     /**
      * @description api请求基础路径
+     * 请求接口
      */
     APIUrl: {
         dev: { // 开发 - 切换到dev环境
-            baseUrl: 'http://media.dev.deemob.com', // 基础请求接口
-            adminComUrl: 'http://admin.dev.deemob.com' // ssp-admin 管理平台
+            baseUrl: 'http://apim.gladdigit.com', // 基础请求接口
+            adminComUrl: 'http://apia.gladdigit.com' // ssp-admin 管理平台
         },
         deving: { // 开发环境
-            baseUrl: 'http://media.dev.deemob.com', // 基础请求接口
-            adminComUrl: 'http://admin.dev.deemob.com' // ssp-admin 管理平台
+            baseUrl: 'http://apim.gladdigit.com', // 基础请求接口
+            adminComUrl: 'http://apia.gladdigit.com' // ssp-admin 管理平台
         },
         testing: { // 测试服务器
-            baseUrl: 'http://media.test.deemob.com', // 基础请求接口
-            adminComUrl: 'http://admin.test.deemob.com' // ssp-admin 管理平台
+            baseUrl: 'http://apim.gladdigit.com', // 基础请求接口
+            adminComUrl: 'http://apia.gladdigit.com' // ssp-admin 管理平台
         },
         gray: { // 灰度
-            baseUrl: 'https://media.gray.deemob.com', // 基础请求接口
-            adminComUrl: 'https://admin.gray.deemob.com' // ssp-admin 管理平台
+            baseUrl: 'http://grayapim.gladdigit.com', // 基础请求接口
+            adminComUrl: 'http://grayapia.gladdigit.com' // ssp-admin 管理平台
         },
         pro: { // 正式服务器
             baseUrl: 'http://apim.gladdigit.com', // 基础请求接口

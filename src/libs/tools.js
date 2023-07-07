@@ -413,3 +413,13 @@ export function number2Thousand(num) {
         }
     }
 }
+
+/**
+ * [deepClone 深拷贝]
+ * @param  {[type]} data [description]
+ * @return {[type]}      [description]
+ */
+export function deepClone (data) {
+    return JSON.parse(JSON.stringify(data))
+}
+

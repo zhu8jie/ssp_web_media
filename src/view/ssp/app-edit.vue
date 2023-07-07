@@ -8,7 +8,7 @@
 					<br>
 					api权限：{{hasApiPer}} -->
 					<FormItem label="选择应用平台和应用商店" class="ivu-form-item-required">
-						<FormItem prop="os_type" style="display: inline-block; width: 120px">
+						<FormItem prop="os_type" style="width: 508px">
 							<Select :disabled="resolveNoEdit || auditWaitAndRefuse" v-model="formBase.os_type" placeholder="应用平台" @on-change="_getStore" data-tag="resetAccessType">
 								如果该媒体的账号权限只给了sdk，那么在选择应用平台时，不可以选择ios平台
 								<Option :disabled="hasSdkPer && !hasApiPer && item.id === 2" v-for="item in osTypeList" :value="item.id" :key="item.id">{{ item.name }}</Option>
@@ -37,16 +37,22 @@
 							<Option v-for="item in categoryList" :value="item.id" :key="item.id">{{ item.name }}</Option>
 						</Select>
 					</FormItem> -->
-					<FormItem label="填写应用关键字" prop="keyword">
+					<!-- <FormItem label="填写应用关键字" prop="keyword">
 						<Input style="width: 508px" maxlength="60" show-word-limit placeholder="多个关键词请用英文逗号隔开" v-model.trim="formBase.keyword"></Input>
-					</FormItem>
-					<FormItem label="填写应用简介" prop="desc">
+					</FormItem> -->
+					<!-- <FormItem label="填写应用简介" prop="desc">
 						<Input style="width: 508px" maxlength="200" :rows=5 show-word-limit placeholder="准确的简介能够提升广告的匹配度和收益" type="textarea" v-model.trim="formBase.desc"></Input>
-					</FormItem>
+					</FormItem> -->
 					<FormItem label="填写应用包名" prop="package_name">
 						<Input :disabled="resolveNoEdit" style="width: 508px" placeholder="填写包名必须与广告请求的包名一致，否则影响收益" maxlength="50" v-model.trim="formBase.package_name"></Input>
 						<p class="upload-img-format-tips">我们验证包名的唯一性，请求时只验证主包名</p>
 					</FormItem>
+
+					<!-- 应用下载链接 -->
+					<FormItem label="应用下载链接" prop="app_link">
+						<Input style="width: 508px" placeholder="请填写应用下载链接" v-model.trim="formBase.app_link"></Input>
+					</FormItem>
+
 					<FormItem label="选择接入方式" prop="access_type">
 						<!-- {{formBase.access_type}} -->
 						<RadioGroup class="private-check-card" type="button" v-model="formBase.access_type">
@@ -148,6 +154,7 @@ import { getAppIndustry } from '@/api/common.js'
 import { formRules } from './app-edit-rules.js' // 正则校验
 import { mapActions } from 'vuex'
 import uploadImage from '_c/upload-image'
+import { deepClone } from '@/libs/tools'
 
 export default {
 	name: 'appEdit',
@@ -166,24 +173,25 @@ export default {
 
 			formBase: {
 				os_type: '', // 应用平台
-				app_store_id: '', // 应用商店ID
-				store_detail_url: '', // 应用商店详情地址
-				store_download_url: '', // 商店下载地址
+				// app_store_id: '', // 应用商店ID
+				// store_detail_url: '', // 应用商店详情地址
+				// store_download_url: '', // 商店下载地址
 				app_name: '', // 应用名称
-				app_type_one: '', // 应用所属行业一级分类ID
-				app_type_two: '', // 应用所属行业二级分类ID
-				keyword: '', // 应用关键字，英文逗号分隔
-				desc: '', // 应用简介
+				// app_type_one: '', // 应用所属行业一级分类ID
+				// app_type_two: '', // 应用所属行业二级分类ID
+				// keyword: '', // 应用关键字，英文逗号分隔
+				// desc: '', // 应用简介
 				package_name: '', // 应用包名
+				app_link: '', // 应用下载链接
 				access_type: '', // 接入方式
 				app_platform_id: [], // 第三方SDK
-				icon: '', // 上传应用icon地址
-				copyright_img: '', // 上传计算机软件著作权登记证书
-				authorization_img: '', // 上传公司关联关系及媒体授权证明
-				app_check_store: [{id: '', value: ''}, {id: '', value: ''}, {id: '', value: ''}], // 应用商店确认 key是商店ID，value是商店地址
+				// icon: '', // 上传应用icon地址
+				// copyright_img: '', // 上传计算机软件著作权登记证书
+				// authorization_img: '', // 上传公司关联关系及媒体授权证明
+				// app_check_store: [{id: '', value: ''}, {id: '', value: ''}, {id: '', value: ''}], // 应用商店确认 key是商店ID，value是商店地址
 				app_dau: 0, // 日活用户数，单位（万人）
-				app_male_rate: 0, // 应用男性用户占比
-				app_female_rate: 0, // 应用女性用户占比
+				// app_male_rate: 0, // 应用男性用户占比
+				// app_female_rate: 0, // 应用女性用户占比
 				no_put_type: '' // 不可投放类型
 			},
 			submitClock: false, // 保存锁
@@ -279,7 +287,14 @@ export default {
 				// 待审核或已拒绝，不可编辑应用平台
 				this.auditWaitAndRefuse = _data.status === 3 || _data.status === 4
 
-				this.formBase = _data
+				// last. 赋值
+				Object.keys(this.formBase).forEach(key => {
+					if (_data[key] !== undefined) {
+						this.formBase[key] = _data[key]
+					}
+				})
+				// this.formBase = _data
+
 				this.backPlatform3rd = _data.app_platform_id
 
 				this._getStore() // 获取appstroe数据
@@ -296,75 +311,83 @@ export default {
 		 */
 		submitFormData(name) {
 			this.$refs[name].validate((valid) => {
-				if (valid) {
+				if (!valid) {
+					return
+				}
 
-					let form = {...this.formBase}
+				let form = deepClone(this.formBase)
 
-					// 提交内容需要格式化处理
-					
-					// 1-pre, 因为后台可能减少第三方sdk选项，所以先处理数据
-					let lastPlat3rd = []
-					this.platform3rdListSelect.map(item => {
-						if (!!item.id) {
-							lastPlat3rd.push(item.id)
-						}
-					})
+				// 提交内容需要格式化处理
+				
+				// 1-pre, 因为后台可能减少第三方sdk选项，所以先处理数据
+				let lastPlat3rd = []
+				this.platform3rdListSelect.map(item => {
+					if (!!item.id) {
+						lastPlat3rd.push(item.id)
+					}
+				})
+
+				// 1. 只有选择sdk， 格式化成{id: 1, value: 1/-1}
+				// 修改： 2020.9.27，只要选择了sdk，默认就会有交互通
+				let _arr = []
+				this.platform3rdList.map(item => {
+					let _obj = {id: item.id, value: -1}
 
 					// 1. 只有选择sdk， 格式化成{id: 1, value: 1/-1}
 					// 修改： 2020.9.27，只要选择了sdk，默认就会有交互通
-					let _arr = []
-					this.platform3rdList.map(item => {
-						let _obj = {id: item.id, value: -1}
-
-						// 1. 只有选择sdk， 格式化成{id: 1, value: 1/-1}
-						// 修改： 2020.9.27，只要选择了sdk，默认就会有交互通
-						if (form.access_type == 2) {
-							// 1: 前者处理已选择id,   2后者处理：管理平台变化了第三方sdk || id = 3 交互通默认勾选 
-							if ((form.app_platform_id.indexOf(item.id) > -1 && lastPlat3rd.indexOf(item.id) > -1)) {
-								_obj['value'] = 1
-								_arr.push(_obj)
-							} else {
-								_arr.push(_obj)
-							}
+					if (form.access_type == 2) {
+						// 1: 前者处理已选择id,   2后者处理：管理平台变化了第三方sdk || id = 3 交互通默认勾选 
+						if ((form.app_platform_id.indexOf(item.id) > -1 && lastPlat3rd.indexOf(item.id) > -1)) {
+							_obj['value'] = 1
+							_arr.push(_obj)
 						} else {
-							// 选择api时 ， 清空第三方sdk
 							_arr.push(_obj)
 						}
-					})
-					form.app_platform_id = _arr
-
-					// 2.格式化处理广告展示的应用商店及下载地址 
-					let appCheckArr = []
-					form.app_check_store.map(item => {
-						if (!!item.id && !!item.value) {
-							appCheckArr.push(item)
-						}
-					})
-					form.app_check_store = appCheckArr
-
-					// 3. 提交审核状态
-					// 3.1 如果已拒绝，再次提交时，触发待审核
-					if (form.status === 4) {
-						form.status = 3
+					} else {
+						// 选择api时 ， 清空第三方sdk
+						_arr.push(_obj)
 					}
+				})
+				form.app_platform_id = _arr
 
-					// 3.2 如果已通过，并且接入方式为sdk, 但是修改第三方sdk，触发修改审核中
-					if (form.status === 1 && form.access_type == 2 && this.formBase.app_platform_id !== this.backPlatform3rd) {
-						form.status = 2
+				// 2.格式化处理广告展示的应用商店及下载地址
+				/*
+				let appCheckArr = []
+				form.app_check_store.map(item => {
+					if (!!item.id && !!item.value) {
+						appCheckArr.push(item)
 					}
+				})
+				form.app_check_store = appCheckArr
+				*/
 
-					this.submitClock = true
-
-					saveAppDetail(form).then(res => {
-						this.submitClock = false
-						if (res.code === 200) {
-							this.$Message.success({content: form.app_id ? '修改成功' : '保存成功', duration: 3})
-							this.goBack()
-						}
-					}, err => {
-						this.submitClock = false
-					})
+				// 3. 提交审核状态
+				// 3.1 如果已拒绝，再次提交时，触发待审核
+				if (form.status === 4) {
+					form.status = 3
 				}
+
+				// 3.2 如果已通过，并且接入方式为sdk, 但是修改第三方sdk，触发修改审核中
+				if (form.status === 1 && form.access_type == 2 && this.formBase.app_platform_id !== this.backPlatform3rd) {
+					form.status = 2
+				}
+
+				// 4. 区分新增和编辑
+				if (this.app_id > 0) {
+					form.app_id = this.app_id
+				}
+
+				this.submitClock = true
+
+				saveAppDetail(form).then(res => {
+					this.submitClock = false
+					if (res.code === 200) {
+						this.$Message.success({content: this.app_id ? '修改成功' : '保存成功', duration: 3})
+						this.goBack()
+					}
+				}, err => {
+					this.submitClock = false
+				})
 			})
 		},
 		/**

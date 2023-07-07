@@ -20,14 +20,14 @@
             </div>
           </div>
         </FormItem>
-        <FormItem class="accountForm" label="公司法人姓名">
+        <!-- <FormItem class="accountForm" label="公司法人姓名">
           <p class="text">{{ accountData['legal_person_name'] }}</p>
-        </FormItem>
-        <FormItem class="accountForm" label="公司法人身份证号">
+        </FormItem> -->
+        <!-- <FormItem class="accountForm" label="公司法人身份证号">
           <p v-if="accountData['legal_person_code']" class="text">{{ accountData['legal_person_code'] }}</p>
           <p v-else>无</p>
-        </FormItem>
-        <FormItem class="accountForm" label="公司法人身份证正反面照片">
+        </FormItem> -->
+        <!-- <FormItem class="accountForm" label="公司法人身份证正反面照片">
           <div v-if="accountData['legal_person_card_p'] || accountData['legal_person_card_b']">
           <div  class="card_img" @mouseenter="enter(2)" @mouseleave="leave">
             <img class="imgs" :src='accountData["legal_person_card_p"]' alt="">
@@ -43,8 +43,7 @@
           </div>
           </div>
           <div v-else>无</div>
-
-        </FormItem>
+        </FormItem> -->
         <div class="alert">
           <Icon type="ios-alert-outline" size="18" style=" color:#F13440;font-weight: bold"/>
           <span>为了保证您的账户安全，以上账户信息无法自行修改，若有调整，请联系客服</span>
@@ -87,13 +86,13 @@
           </FormItem>
           <FormItem class="accountForm phone_code" label="联系人手机号码" prop="dev_phone">
             <Input v-model.trim="accountData.dev_phone" maxlength="11" placeholder="请输入联系人手机号码" autocomplete="off"/>
-             <div class="get-code" @click.stop="getCode">
+             <!-- <div class="get-code" @click.stop="getCode">
                 <span :class="isCodeIng?'codeColor':''">{{codeTxt}}</span>
-             </div>
+             </div> -->
           </FormItem>
-          <FormItem class="accountForm" label="验证码" prop="phone_code">
+          <!-- <FormItem class="accountForm" label="验证码" prop="phone_code">
             <Input v-model.trim="accountData.phone_code"  placeholder="请输入验证码" autocomplete="off"/>
-          </FormItem>
+          </FormItem> -->
 
           <FormItem class="account_infro">
             <Button  type="primary" :loading="submitClock" @click="accountSave">
@@ -149,9 +148,9 @@
             {required: true, message: '请输入联系人姓名', trigger: 'blur'},
             {max: 10, message: '长度不超过10', trigger: 'blur'},
           ],
-          phone_code: [
-            {required: true, message: '请输入验证码', trigger: 'blur'}
-          ],
+          // phone_code: [
+          //   {required: true, message: '请输入验证码', trigger: 'blur'}
+          // ],
           dev_email: [
             {required: true, message: '请输入联系人邮箱', trigger: 'blur'},
             {max: 30, message: '长度不超过30', trigger: 'blur'},
@@ -267,7 +266,7 @@
         obj.province_id = this.accountData.province_id
         obj.city_id = this.accountData.city_id
         obj.address = this.accountData.address
-        obj.verification = this.accountData.phone_code
+        // obj.verification = this.accountData.phone_code
         getUserUpdate(obj).then(data => {
           let userUpdata = data
           this.submitClock = false

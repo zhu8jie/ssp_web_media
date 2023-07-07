@@ -10,13 +10,13 @@
           <FormItem label="确认密码" prop="passwdCheck">
             <Input type="password" :maxlength="20" v-model.trim="passwordData.passwdCheck" password/>
           </FormItem>
-          <FormItem class="accountForm phone_code" label="手机验证码" prop="verification">
+          <!-- <FormItem class="accountForm phone_code" label="手机验证码" prop="verification">
             <Input v-model.trim="passwordData.verification" placeholder="请输入验证码" autocomplete="off"/>
             <div class="get-code" @click.stop="getCode">
               <span :class="isCodeIng?'codeColor':''">{{codeTxt}}</span>
             </div>
             <p v-if="isCodeText" class="ti">向尾号为<span>{{ phone_behind }}</span>的手机发送了验证码，请注意查收</p>
-          </FormItem>
+          </FormItem> -->
 
 
           <FormItem class="change_bottom">
@@ -68,7 +68,7 @@
               {pattern: /^[a-zA-Z0-9_]{6,20}$/, message: '密码必须是字母或数字的6-20位字符组成', trigger: 'blur'}
           ],
           passwdCheck: [{required: true, validator: validatePassCheck, trigger: 'blur'}],
-          verification: [{required: true, message: '请输入验证码', trigger: 'blur'}]
+          // verification: [{required: true, message: '请输入验证码', trigger: 'blur'}]
         }
       }
     },
@@ -124,10 +124,10 @@
           if (valid) {
             this.submitClock = true
             let password = this.passwordData.passwdCheck
-            let phone_pwd = this.passwordData.verification
+            // let phone_pwd = this.passwordData.verification
             getPasswordUpdate({
               password,
-              phone_pwd
+              // phone_pwd
             }).then(data => {
               let date = data
               this.submitClock = false

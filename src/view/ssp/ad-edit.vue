@@ -238,7 +238,7 @@ export default {
 				need_callback: -1, // 是否需要回调，-1=否，1=是
 				callback_url: '', // 回调地址
 				ad_image_url: '', // 上传广告位截图
-				slot_support: [-1, -1, -1, 1, -1, -1, -1], // 广告位支持项，数组下标，0=一键下载，1=下载上报，2=安装上报，3=deeplink，4=deeplink上报，5=点击坐标上报, 6=支持从落地页中获取下载地址与参数, -1=不支持，1=支持 
+				slot_support: [1, 1, 1, 1, 1, 1, 1], // 广告位支持项，数组下标，0=一键下载，1=下载上报，2=安装上报，3=deeplink，4=deeplink上报，5=点击坐标上报, 6=支持从落地页中获取下载地址与参数, -1=不支持，1=支持 
 				// 2021/2/25 新创建的广告位，默认支持deeplink [3] = 1
 				response_duration: 0, // 响应速度，单位（毫秒）
 				ssp_slot_name: '', // 广告位名称
@@ -246,6 +246,7 @@ export default {
 			},
 
 			submitClock: false, // 保存锁
+			sceneTitle: '', // 广告场景
 			demoTitle: '', // 手机框title
 			demoSrc: '', // 手机demo预览图
 
@@ -547,6 +548,9 @@ export default {
 			this.demoSrc = _style.demoIcon ? require('@/assets/image/ad/demo/' + _style.demoIcon) : require(`@/assets/image/ad/demo/${_style.icon}.jpg`)
 			// demo图片的title
 			this.demoTitle = `${_scene.title} - ${_style.title}`
+
+			// 广告场景
+			this.sceneTitle = _scene.title
 		},
 		/**
 		 * [judgeSupportVideo 判断广告素材类型是否支持video和img]
@@ -700,9 +704,9 @@ export default {
 		}
 	},
 	watch: {
-		'demoTitle' () {
-			if (this.demoTitle && !this.slot_id) {
-				this.formBase.ssp_slot_name = `${this.appBaseData.app_name ? this.appBaseData.app_name + '-' : ''}${this.demoTitle}`
+		'sceneTitle' () {
+			if (this.sceneTitle && !this.slot_id) {
+				this.formBase.ssp_slot_name = `${this.appBaseData.app_name ? this.appBaseData.app_name + '-' : ''}${this.sceneTitle}`
 			}
 		}
 	}

@@ -2,7 +2,7 @@
   <div class="layout" style="background: #FFFFff">
     <div class="header">
       <div class="left">
-        <img src="~@/assets/image/logo.png" alt="">
+        <img src="~@/assets/image/login_logo.png" alt="">
         <span>数字欢喜</span>
       </div>
       <div class="text">申请开发者账号</div>
@@ -52,13 +52,13 @@
               </upload-image>
               <p class="upload_des">营业执照照片或彩色扫描件,格式：jpg，大小不大于2M</p>
             </FormItem>
-            <FormItem label="公司法人姓名" prop="legal_person_name">
+            <!-- <FormItem label="公司法人姓名" prop="legal_person_name">
               <Input v-model.trim="ruleForm.legal_person_name" placeholder="请输入公司法人姓名" autocomplete="off" maxlength="30"/>
-            </FormItem>
-            <FormItem label="公司法人身份证号" prop="legal_person_code">
+            </FormItem> -->
+            <!-- <FormItem label="公司法人身份证号" prop="legal_person_code">
               <Input v-model.trim="ruleForm.legal_person_code" placeholder="请输入公司法人身份证号" autocomplete="off"/>
-            </FormItem>
-            <FormItem label="公司法人身份证正反面照片" prop="legal_person_card_p">
+            </FormItem> -->
+            <!-- <FormItem label="公司法人身份证正反面照片" prop="legal_person_card_p">
               <div style="display: flex;justify-content: space-between">
                 <upload-image  v-model="ruleForm.legal_person_card_p" :widthVal="215" :heightVal="150" :idVal="2">
                   <div class="upload_text">
@@ -80,10 +80,10 @@
                 </upload-image>
               </div>
               <p class="upload_des">照片或彩色扫描件，格式：jpg，大小：不大于2M</p>
-            </FormItem>
-            <FormItem label="产品名单" prop="product_list">
+            </FormItem> -->
+            <!-- <FormItem label="产品名单" prop="product_list">
               <Input v-model.trim="ruleForm.product_list" placeholder="填写多个产品名单时用英文逗号隔开" maxlength="50"/>
-            </FormItem>
+            </FormItem> -->
             <FormItem label="联系地址" prop="address">
               <Row>
                 <Col :span="5">
@@ -235,18 +235,18 @@ export default {
                 company_short_name: '', // 公司对外简称
                 credit_code: '', // 统一社会信用代码
                 business_license: '', // 营业执照照片地址
-                legal_person_name: '', // 公司法人姓名
-                legal_person_code: '', // 公司法人身份证号
-                legal_person_card_p: '', // 公司法人身份证正面照片
-                legal_person_card_b: '', // 公司法人身份证反面照片
-                product_list: '', // 产品名单
+                // legal_person_name: '', // 公司法人姓名
+                // legal_person_code: '', // 公司法人身份证号
+                // legal_person_card_p: '', // 公司法人身份证正面照片
+                // legal_person_card_b: '', // 公司法人身份证反面照片
+                // product_list: '', // 产品名单
                 province_id: 0, // 省份ID
                 city_id: 0, // 城市ID
                 address: '', // 联系地址
                 dev_name: '', // 联系人姓名
                 dev_email: '', // 联系人邮箱
-                dev_phone: '', // 联系人手机号码
-                verification: '', // 手机验证码
+                // dev_phone: '', // 联系人手机号码
+                // verification: '', // 手机验证码
                 // bank_type_id: '', // 开户行类型
                 bank_name: '', // 开户行名称
                 bank_province_id: 0, // 开户行省份

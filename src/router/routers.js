@@ -143,27 +143,27 @@ export default [
 			}
 		]
 	},
-	{
-		path: '/finance', // 结算中心
-		name: 'finance',
-		redirect: '/finance/manage',
-		component: Main,
-		meta: {
-			title: '结算中心',
-			redirectTo: 'finance-index',
-			icon: 'icon-finance'
-		},
-		children: [
-			{
-				path: '/finance/manage',
-				name: 'finance-index',
-				meta: {
-					title: '结算中心'
-				},
-				component: resolve => require(['@/view/finance/manage'], resolve)
-			}
-		]
-	},
+	// {
+	// 	path: '/finance', // 结算中心
+	// 	name: 'finance',
+	// 	redirect: '/finance/manage',
+	// 	component: Main,
+	// 	meta: {
+	// 		title: '结算中心',
+	// 		redirectTo: 'finance-index',
+	// 		icon: 'icon-finance'
+	// 	},
+	// 	children: [
+	// 		{
+	// 			path: '/finance/manage',
+	// 			name: 'finance-index',
+	// 			meta: {
+	// 				title: '结算中心'
+	// 			},
+	// 			component: resolve => require(['@/view/finance/manage'], resolve)
+	// 		}
+	// 	]
+	// },
 	{
 		path: '/infro', // 账户管理
 		name: 'infroManage',
