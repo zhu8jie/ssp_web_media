@@ -245,7 +245,7 @@
       <p class="stepTitle">11.4本协议所有条款的标题仅为阅读方便，本身并无实际涵义，不能作为本协议涵义解释的依据。（完）</p>
 
 
-      <p style="margin:40px 0 20px">北京数字欢喜科级有限公司</p>
+      <p style="margin:40px 0 20px">北京数字欢喜科技有限公司</p>
     </div>
   </div>
 </template>
