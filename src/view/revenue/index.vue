@@ -654,7 +654,13 @@ export default {
                 if (data.code === 200) {
                     let url = data.data.url
                     let filename = this.search.start_date + '～' + this.search.end_date + '数据收益.xlsx'
-                    this.courseDownload(url, filename)
+
+                    console.log(this.$APIUrl.baseUrl)
+
+                    console.log(`${this.$APIUrl.baseUrl}${url}`)
+
+                    this.courseDownload(`${this.$APIUrl.baseUrl}${url}`, filename)
+
                 }
             })
         },
