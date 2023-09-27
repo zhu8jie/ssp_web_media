@@ -18,7 +18,7 @@
                       :load-options="appTreeSelectListData"
                       :limitText="limitText"
                       :limit="1"
-                      placeholder="应用名称"
+                      placeholder="应用名称(多选)"
                       v-model="search.app_id_arr"
                       noResultsText="没有搜索的结果"
                       noOptionsText="没有应用名称"
@@ -641,6 +641,7 @@ export default {
         },
         // 下载报表
         downStatement() {
+            console.log('点击了下载')
             let down = {}
             let data = this.search
             data.page_size = parseInt(this.total_count)
@@ -654,6 +655,8 @@ export default {
                 if (data.code === 200) {
                     let url = data.data.url
                     let filename = this.search.start_date + '～' + this.search.end_date + '数据收益.xlsx'
+
+                    console.log('此处有console')
 
                     console.log(this.$APIUrl.baseUrl)
 
